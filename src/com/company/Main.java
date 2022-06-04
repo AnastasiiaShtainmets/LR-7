@@ -15,7 +15,7 @@ public class Main {
         Formula did = new Formula(x,y,z);
         did.displayFormula();
         try{
-            int result=Formula.getFormula(1);
+            int result=Formula.getFormula(x, y, z);
             System.out.println(result);
         }
         catch (FormulaException ex){
@@ -38,10 +38,18 @@ public class Main {
         double vector = Math. sqrt( Math.pow(x,2) + Math.pow(y,2) + Math.pow(z,2) );
         System.out.println(vector);
     }
-     public static int getFormula(int scanner) throws FormulaException {
+     public static int getFormula(int x, int y, int z) throws FormulaException {
          int result = 1;
-         if (scanner < 0) throw new FormulaException (" Число меньше 0 ", scanner);
-         for (int p = 0; p <= scanner; p++) {
+         if (x < 0 ) throw new FormulaException (" Число меньше 0 ",x );
+         for (int p = 0; p <= x; p++) {
+             result *= p;
+         }
+         if (y < 0 ) throw new FormulaException (" Число меньше 0 ",y );
+         for (int p = 0; p <= y; p++) {
+             result *= p;
+         }
+         if (z < 0 ) throw new FormulaException (" Число меньше 0 ",z );
+         for (int p = 0; p <= z; p++) {
              result *= p;
          }
          return result;
@@ -49,9 +57,7 @@ public class Main {
  }
 class FormulaException extends Exception {
     private int number;
-
     public int getNumber() {
-
         return number;
     }
 
